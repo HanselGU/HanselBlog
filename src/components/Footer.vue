@@ -62,7 +62,7 @@ onMounted(() => {
     font-family: "Microsoft Yahei", "PingFang SC", sans-serif; /* 无衬线字体，更易读 */
 
     /* 内边距：避免文字贴容器边缘 */
-    padding: 20px 80px;
+    padding: 20px 40px;
     word-wrap: break-word; /* 自动换行 */
     overflow-wrap: break-word;
 }

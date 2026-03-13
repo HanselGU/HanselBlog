@@ -48,6 +48,7 @@ import Loader from '@/components/Loader.vue';
 
 .container {
     width: 100%;
+    min-height: 100%;
     margin: 0 auto;
 }
 

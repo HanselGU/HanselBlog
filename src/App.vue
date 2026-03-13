@@ -70,6 +70,7 @@ onUnmounted(() => {
 <style scoped>
 .main-div {
     background-color: #f0f4f8;
+    /*background-color: white;*/
     overflow: hidden;
     margin: 0 auto;
     /*background-color: oklch(21% .034 264.665);*/

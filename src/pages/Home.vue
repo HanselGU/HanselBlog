@@ -223,7 +223,8 @@ onUnmounted(() => {
 .photoSpace {
     padding: 60px 60px;
     position: relative;
-    margin-bottom: 300px;
+    margin-top: 80px;
+    margin-bottom: 200px;
 }
 
 .photoContainer {

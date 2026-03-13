@@ -48,6 +48,9 @@ const handleScroll=() => {
 
 onMounted(() => {
     window.addEventListener('scroll', handleScroll)
+    if (activeRoute!='Home') {
+        isScrolled.value=false
+    }
 })
 
 onUnmounted(() => {
@@ -71,10 +74,10 @@ const routePush=(path) => {
         isScrolled.value=true
         router.push({ name: path })
     } else {
-        if (activeRoute!=path) {
-            router.push({ name: path })
-            isScrolled.value=false
-        }
+        // if (activeRoute!=path) {
+        router.push({ name: path })
+        isScrolled.value=false
+        // }
     }
     activeRoute=path
 }

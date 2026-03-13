@@ -34,7 +34,16 @@ export default defineConfig({
                 target: 'https://uapis.cn',
                 changeOrigin: true,
                 rewrite: (path) => path.replace('/Uapi', '')
+            },
+            '/juhe': {
+                target: 'http://web.juhe.cn:8080',
+                changeOrigin: true,
+                rewrite: (path) => path.replace('/juhe', '')
             }
         }
+    },
+    compress: {
+        drop_console: true,
+        drop_debugger: true
     }
 })

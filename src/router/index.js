@@ -19,23 +19,46 @@ const routes=[
             {
                 path: 'note',
                 name: 'Note',
-                component: () => import('@/pages/Note.vue')
+                component: () => import('@/pages/Note.vue'),
+
             },//文章列表
             {
-                path: 'note/:id',
+                path: 'article',
                 name: 'NoteDetail',
                 component: () => import('@/pages/NoteDetail.vue')
             },//文章详情
             {
                 path: 'tools',
                 name: 'Tools',
-                component: () => import('@/pages/Tools.vue')
+                component: () => import('@/pages/Tools.vue'),
+                children: [
+                    {
+                        path: 'bing',
+                        name: 'BING',
+                        component: () => import('@/components/BING.vue')
+                    }, {
+                        path: 'ip',
+                        name: 'IP',
+                        component: () => import('@/components/IP.vue')
+                    }, {
+                        path: 'kfc',
+                        name: 'KFC',
+                        component: () => import('@/components/KFC.vue')
+                    }, {
+                        path: 'hotBoard',
+                        name: 'HotBoard',
+                        component: () => import('@/components/HotBoard.vue')
+                    }, {
+                        path: 'star',
+                        name: 'STAR',
+                        component: () => import('@/components/STAR.vue')
+                    }, ]
             },//分类页
         ]
     }, {
         path: '/:pathMatch(.*)*',
-        name: 'NotFound',
-        component: () => import('@/pages/NotFound.vue')//404页面
+        redirect: { name: 'Home' }, // name: 'NotFound',
+        // component: () => import('@/pages/NotFound.vue')//404页面
     } ]
 const router=createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
