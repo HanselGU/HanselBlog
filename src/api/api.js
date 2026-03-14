@@ -59,12 +59,13 @@ const getHotBoard=() => {
 const getConstellation=(name) => {
     return api({
         // url: '/juhe/constellation/getAll',
-        url: 'http://web.juhe.cn:8080/constellation/getAll',
+        url: 'https://tools.mgtv100.com/external/v1/constellations',
         method: 'GET',
         params: {
-            key: '4a11bbcbf089edaf14c2d9bdb80c2ec4',
-            consName: name,
-            type: 'today'
+            // key: '4a11bbcbf089edaf14c2d9bdb80c2ec4',
+            // consName: name,
+            type: 'today',
+            constellation_name: name
         }
     })
 }

@@ -79,8 +79,8 @@ async function getIN() {
     try {
         SIGN.setSign(true)
         let res=await getConstellation(selectedConstellation.value)
+        target.value=res.data
         showResult.value=true
-        target.value=res
         // console.log(res)
     } catch (error) {
         console.log('err', error)
