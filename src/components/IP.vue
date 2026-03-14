@@ -34,7 +34,7 @@ async function getIN() {
         let res1=await getIP()
         let res2=await getWeather()
         IP.value=res1.ip
-        region.value=`${res2.province} ${res2.city} ${res2.district}`
+        region.value=`${res2.province} ${res2.city}`
         lonlat.value=`${res1.longitude} & ${res1.latitude}`
         weather.value=res2.weather
         temhum.value=`${res2.temperature}℃ ${res2.humidity}%`
