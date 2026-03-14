@@ -46,8 +46,9 @@ const tools=ref([
     {
         path: 'bing',
         name: 'BING',
-        text: '每日一图',
-        inner: '获取必应今日图片'
+        text: '必应一图',
+        inner: '获取必应今日壁纸'
+        // inner: '随机获取一周内必应图片'
     }, {
         path: 'ip',
         name: 'IP',

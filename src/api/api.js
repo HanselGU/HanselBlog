@@ -8,29 +8,32 @@ const getSaying=() => {
     //     return res
     // })
     return api({
-        url: '/Uapi/api/v1/saying',
+        // url: '/Uapi/api/v1/saying',
+        url: 'https://uapis.cn/api/v1/saying',
         method: 'GET'
     })
 }
 const getIP=() => {
     return api({
-        url: '/Uapi/api/v1/network/myip',
+        // url: '/Uapi/api/v1/network/myip',
+        url: 'https://uapis.cn/api/v1/network/myip',
         method: 'GET'
     })
 }
 const getWeather=() => {
     return api({
-        url: '/Uapi/api/v1/misc/weather',
+        // url: '/Uapi/api/v1/misc/weather',
+        url: 'https://uapis.cn/api/v1/misc/weather',
         method: 'GET'
     })
 }
-const getBingPhoto=() => {
+const getBingPhoto=(index) => {
     return api({
         url: 'https://bing.biturl.top/',
         method: 'GET',
         params: {
             format: 'json',
-            index: '0',
+            index: index,
             mkt: 'zh-CN',
             resolution: '1920'
         }
@@ -44,7 +47,8 @@ const getKFC=() => {
 }
 const getHotBoard=() => {
     return api({
-        url: '/Uapi/api/v1/misc/hotboard',
+        // url: '/Uapi/api/v1/misc/hotboard',
+        url: 'https://uapis.cn/api/v1/misc/hotboard',
         method: 'GET',
         params: {
             type: 'douyin'
@@ -54,7 +58,8 @@ const getHotBoard=() => {
 
 const getConstellation=(name) => {
     return api({
-        url: '/juhe/constellation/getAll',
+        // url: '/juhe/constellation/getAll',
+        url: 'http://web.juhe.cn:8080/constellation/getAll',
         method: 'GET',
         params: {
             key: '4a11bbcbf089edaf14c2d9bdb80c2ec4',

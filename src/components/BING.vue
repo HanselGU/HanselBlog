@@ -18,6 +18,7 @@ const SIGN=toolSign()
 const text=ref('')
 const url=ref('')
 
+// const random=Math.floor(Math.random() * 7 ) + 1;
 async function getIN() {
     try {
         SIGN.setSign(true)

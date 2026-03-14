@@ -25,11 +25,11 @@ export default defineConfig({
         port: 3000,
         open: true,
         proxy: {
-            '/api': {
-                target: 'https://tu.ltyuanfang.cn',
-                changeOrigin: true,
-                rewrite: (path) => path.replace('/api', '')
-            },
+            // '/api': {
+            //     target: 'https://tu.ltyuanfang.cn',
+            //     changeOrigin: true,
+            //     rewrite: (path) => path.replace('/api', '')
+            // },
             '/Uapi': {
                 target: 'https://uapis.cn',
                 changeOrigin: true,
