@@ -4,6 +4,15 @@
       <div class="NoteCode">
         <div class="codeHeader">code & device</div>
         <div class="codeList">
+          <div class="codeText" @click=" routePush(6)">
+            <div class="textTitle">使用vercel搭建个人网站的经验</div>
+          </div>
+          <div class="codeText" @click=" routePush(5)">
+            <div class="textTitle">TypeScript学习：接口和类的区别</div>
+          </div>
+          <div class="codeText" @click=" routePush(4)">
+            <div class="textTitle">Promise和asyncawait的实践区别</div>
+          </div>
           <div class="codeText" @click=" routePush(2)">
             <div class="textTitle">个人工作站搭建</div>
           </div>
@@ -44,6 +53,18 @@ const mdArray=ref([
     }, {
         name: '使用vitepress和markdownIT的体验',
         id: 3,
+        type: 'code'
+    }, {
+        name: 'Promise和asyncawait的实践区别',
+        id: 4,
+        type: 'code'
+    }, {
+        name: 'TypeScript学习：接口和类的区别',
+        id: 5,
+        type: 'code'
+    }, {
+        name: '使用vercel搭建个人网站的经验',
+        id: 6,
         type: 'code'
     } ])
 const routePush=(id) => {
