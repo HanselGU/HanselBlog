@@ -1,6 +1,16 @@
 # HanselBlog
 
-This template should help get you started developing with Vue 3 in Vite.
+Vue3 个人博客实践（线上可访问：https://hanselroot.xyz/home ） 
+
+技术栈：Vue3 + Vue Router + Pinia + Axios + Element Plus + Vite + Vercel部署，部分使用TypeScript 
+
+核心实现： 
+
+1. 基于Vue Router实现多页面路由跳转，配置首页等路由规则；
+2. 使用Axios封装接口请求，处理加载状态/异常提示，拉取第三方测试接口数据并渲染； 
+3. 通过Pinia管理全局数据，实现数据的新增/状态切换； 
+4. 使用Element Plus渲染一个子页面； 
+5. 基于Vite构建项目，部署至Vercel实现线上访问，保证项目可正常运行。
 
 ## Recommended IDE Setup
 

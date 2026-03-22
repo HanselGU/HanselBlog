@@ -1,6 +1,13 @@
 <template>
   <div class="Con">
     <div class="leftPart">
+      <!--      <el-carousel height="200px" motion-blur>-->
+      <!--        <el-carousel-item v-for="(item,index) in text" :id="index">-->
+      <!--          <div>-->
+      <!--           <img :src="item.extra.cover">-->
+      <!--          </div>-->
+      <!--        </el-carousel-item>-->
+      <!--      </el-carousel>-->
       <div v-for="(item,index) in text" :id="index" class="inner">
         <div class="title">
           <div class="itemLi">{{item.index}}</div>

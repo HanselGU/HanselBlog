@@ -52,7 +52,11 @@ const routes=[
                         path: 'star',
                         name: 'STAR',
                         component: () => import('@/components/STAR.vue')
-                    }, ]
+                    }, {
+                        path: 'eleShow',
+                        name: 'EleShow',
+                        component: () => import ('@/components/EleShow.vue')
+                    } ]
             },//分类页
         ]
     }, {

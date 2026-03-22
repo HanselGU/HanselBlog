@@ -8,7 +8,7 @@
 
 import MarkdownIt from 'markdown-it'
 import {computed, nextTick, onBeforeMount, onMounted} from 'vue';
-import {mdData} from '@/stores/index.js';
+import {mdData} from '@/stores/mdData.js';
 import {useRoute} from 'vue-router';
 
 // const route=useRoute()

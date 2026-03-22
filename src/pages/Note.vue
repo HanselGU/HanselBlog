@@ -4,28 +4,16 @@
       <div class="NoteCode">
         <div class="codeHeader">code & device</div>
         <div class="codeList">
-          <div class="codeText" @click=" routePush(6)">
-            <div class="textTitle">使用vercel搭建个人网站的经验</div>
-          </div>
-          <div class="codeText" @click=" routePush(5)">
-            <div class="textTitle">TypeScript学习：接口和类的区别</div>
-          </div>
-          <div class="codeText" @click=" routePush(4)">
-            <div class="textTitle">Promise和asyncawait的实践区别</div>
-          </div>
-          <div class="codeText" @click=" routePush(2)">
-            <div class="textTitle">个人工作站搭建</div>
-          </div>
-          <div class="codeText" @click=" routePush(3)">
-            <div class="textTitle">使用vitepress和markdownIT的体验</div>
+          <div v-for="item in mdArray.codeList" :id="item.id" class="codeText" @click=" routePush(item.id)">
+            <div class="textTitle">{{item.name}}</div>
           </div>
         </div>
       </div>
       <div class="NoteLife">
         <div class="noteHeader">life</div>
         <div class="noteList">
-          <div class="codeText" @click=" routePush(1)">
-            <div class="textTitle">成都游玩体验</div>
+          <div v-for="item in mdArray.lifeList" :id="item.id" class="codeText" @click=" routePush(item.id)">
+            <div class="textTitle">{{item.name}}</div>
           </div>
         </div>
       </div>
@@ -38,35 +26,9 @@
 
 import {computed, onBeforeMount, onMounted, ref} from 'vue';
 import router from '@/router/index.js';
-// import {mdData} from '@/stores/index.js';
-// const MD=mdData().mdArray
-// console.log('MD', MD.mdArray[0].inner)
-const mdArray=ref([
-    {
-        name: '成都游玩体验',
-        id: 1,
-        type: 'life'
-    }, {
-        name: '个人工作站搭建',
-        id: 2,
-        type: 'device'
-    }, {
-        name: '使用vitepress和markdownIT的体验',
-        id: 3,
-        type: 'code'
-    }, {
-        name: 'Promise和asyncawait的实践区别',
-        id: 4,
-        type: 'code'
-    }, {
-        name: 'TypeScript学习：接口和类的区别',
-        id: 5,
-        type: 'code'
-    }, {
-        name: '使用vercel搭建个人网站的经验',
-        id: 6,
-        type: 'code'
-    } ])
+import {mdList} from '@/stores/mdData.js';
+
+const mdArray=ref(mdList())
 const routePush=(id) => {
     let params={
         id: id

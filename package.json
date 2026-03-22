@@ -12,6 +12,7 @@
     "@element-plus/icons-vue": "^2.3.2",
     "@mdit/plugin-include": "^0.23.1",
     "axios": "^1.13.6",
+    "element-plus": "^2.13.5",
     "fs-extra": "^11.3.4",
     "loadsh": "^0.0.4",
     "markdown-it": "^14.1.1",

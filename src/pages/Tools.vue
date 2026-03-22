@@ -18,7 +18,7 @@
             <div class="toolSub">{{item.inner}}</div>
           </div>
           <!--          样式占位-->
-          <div class="toolListBox2"></div>
+          <!--          <div class="toolListBox2"></div>-->
         </div>
       </div>
       <div v-show="toolShow" class="toolInner">
@@ -69,7 +69,12 @@ const tools=ref([
         name: 'STAR',
         text: '今日星座',
         inner: '获取选择星座今日运势'
-    }, ])
+    }, {
+        path: 'eleShow',
+        name: 'EleShow',
+        text: 'ElementPlus运用',
+        inner: '组件库运用展示(TS)'
+    } ])
 
 const toolShow=ref(false)
 const chooseTool=(name) => {
