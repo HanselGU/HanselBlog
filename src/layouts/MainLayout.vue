@@ -31,7 +31,7 @@ import Loader from '@/components/Loader.vue';
     position: relative;
     flex-direction: column;
     /*height: 100vh;*/
-    min-height: 900px;
+    min-height: 100vh;
 }
 
 .header {
@@ -47,7 +47,7 @@ import Loader from '@/components/Loader.vue';
 }
 
 .container {
-    width: 100%;
+    width: min(var(--content-width), calc(100% - 32px));
     min-height: 100%;
     margin: 0 auto;
 }
@@ -68,4 +68,10 @@ import Loader from '@/components/Loader.vue';
 /*        width: 100% !important;*/
 /*    }*/
 /*}*/
+
+@media (max-width: 600px) {
+    .container {
+        width: calc(100% - 20px);
+    }
+}
 </style>

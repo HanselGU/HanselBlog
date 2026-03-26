@@ -121,14 +121,16 @@ const routePush=(path) => {
 
 
 .main-header {
+    /* 满屏宽度用于匹配两侧锯齿小方块 */
     margin: 0 24px;
     height: 100%;
-    background-color: white;
+    background-color: var(--color-surface);
     width: calc(100% - 48px);
     display: flex;
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    transition: box-shadow var(--transition-med) ease;
 }
 
 .left-header {
@@ -138,7 +140,7 @@ const routePush=(path) => {
 }
 
 .main-headerScrolled {
-    box-shadow: 0 3px 8px rgba(19, 19, 22, 0.09);
+    box-shadow: var(--shadow-sm);
 }
 
 .headImg {
@@ -156,7 +158,7 @@ const routePush=(path) => {
 .headText {
     font-family: "Doto", sans-serif;
     font-size: 32px;
-    color: #1f1f1f;
+    color: var(--color-text);
     letter-spacing: -0.06em;
     font-weight: 800;
     text-transform: uppercase;
@@ -181,7 +183,7 @@ const routePush=(path) => {
     width: 100px;
     height: 32px;
     margin: 0 10px;
-    color: #1f1f1f;
+    color: var(--color-text);
     font-size: 32px;
     font-weight: 500;
     cursor: pointer; /* 鼠标变为手型 */
@@ -189,11 +191,12 @@ const routePush=(path) => {
     line-height: 32px;
     text-align: center;
     /*border: 1px solid #dee2e6*/
+    transition: color var(--transition-fast) ease;
 }
 
 
 .route-header:hover {
-    color: #0056b3;
+    color: var(--color-primary);
     animation: moveLeft 0.5s ease;
 }
 
@@ -215,7 +218,7 @@ const routePush=(path) => {
     left: 0;
     width: 12px;
     height: calc(100% - 24px);
-    background-color: white;
+    background-color: var(--color-surface);
 
 }
 
@@ -225,7 +228,7 @@ const routePush=(path) => {
     left: 12px;
     width: 12px;
     height: calc(100% - 12px);
-    background-color: white;
+    background-color: var(--color-surface);
 
 }
 
@@ -236,7 +239,7 @@ const routePush=(path) => {
     right: 12px;
     width: 12px;
     height: calc(100% - 12px);
-    background-color: white;
+    background-color: var(--color-surface);
 
 }
 
@@ -246,7 +249,7 @@ const routePush=(path) => {
     right: 0px;
     width: 12px;
     height: calc(100% - 24px);
-    background-color: white;
+    background-color: var(--color-surface);
 
 }
 
@@ -259,6 +262,23 @@ const routePush=(path) => {
     height: 100%;
     content: "";
     z-index: -1;
-    box-shadow: 0 3px 8px rgba(19, 19, 22, 0.09);
+    box-shadow: var(--shadow-sm);
+}
+
+@media (max-width: 700px) {
+    .headText {
+        font-size: 26px;
+        margin-left: 18px;
+    }
+    .route-header {
+        width: 80px;
+        margin: 0 6px;
+        font-size: 22px;
+        line-height: 22px;
+        height: 22px;
+    }
+    .headRoute {
+        width: 300px;
+    }
 }
 </style>

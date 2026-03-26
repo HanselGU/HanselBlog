@@ -37,14 +37,14 @@ onMounted(() => {
     height: 80px;
     line-height: 80px;
     text-align: center;
-    background-color: #bde0fe;
+    background-color: var(--color-accent);
     clip-path: polygon(0px 24px, 12px 24px, 12px 12px, 24px 12px, 24px 0, 100% 0, 100% calc(100% - 24px), calc(100% - 12px) calc(100% - 24px), calc(100% - 12px) calc(100% - 12px), calc(100% - 24px) calc(100% - 12px), calc(100% - 24px) 100%, 0% 100%);
 
 }
 
 .FooterCon {
     /* 基础容器样式（匹配你的蓝色背景） */
-    background-color: #bde0fe; /* 柔和的浅蓝色，可根据你的实际背景色调整 */
+    background-color: var(--color-accent);
     width: 80%; /* 容器宽度，根据实际场景调整 */
     margin: 0 auto;
     height: 80px; /* 容器高度，根据实际场景调整 */
@@ -55,7 +55,7 @@ onMounted(() => {
     align-items: center; /* 垂直居中 */
 
     /* 文字样式优化 */
-    font-size: 20px; /* 合适的字体大小，避免过大/过小 */
+    font-size: clamp(14px, 2vw, 20px); /* 自适应字体大小 */
     font-weight: 400;
     line-height: 80px; /* 行高，让文字行间距舒适 */
     text-align: center;
@@ -67,6 +67,14 @@ onMounted(() => {
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
+}
+
+@media (max-width: 600px) {
+    .FooterCon {
+        padding: 14px 18px;
+        line-height: 64px;
+        height: 64px;
+    }
 }
 
 

@@ -3,7 +3,7 @@
     <div class="Hero">
       <div class="backImg">
         <div class="HeroInner">
-          <div class="HeroContent">
+          <div :style="{ transform: `translate3d(0, ${heroOffset}px, 0) scale(${heroScale})` }" class="HeroContent">
             <div class="con1">
               <div class="HeroImg">
                 <img alt="" class="round-image" src="../assets/img/home1.avif">
@@ -11,11 +11,40 @@
               <div class="homeText">HANSELROOT</div>
             </div>
             <div class="con2">上善若水，水善利万物而不争，处众人之所恶，故几于道</div>
-            <div class="con3">WeChat:XXXXXX</div>
+
+            <div class="tagRow">
+              <span class="tag">Vue 3</span>
+              <span class="tag">Router</span>
+              <span class="tag">Vite</span>
+              <span class="tag">Pinia</span>
+            </div>
+
+            <div class="ctaRow">
+              <button class="btn btnPrimary" @click="goNote">浏览文章</button>
+              <button class="btn btnGhost" @click="goTools">在线工具</button>
+            </div>
+
+            <div class="con3">WeChat:XXXXXX · 欢迎联系</div>
           </div>
         </div>
       </div>
     </div>
+
+    <div class="selectedSection">
+      <div class="selectedHeader">精选文章</div>
+      <div class="selectedGrid">
+        <div
+                v-for="item in selectedArticles"
+                :key="item.id"
+                class="selectedCard u-card u-card-hover"
+                @click="goArticle(item.id)"
+        >
+          <div class="selectedTitle">{{item.name}}</div>
+          <div class="selectedMeta">{{item.type}}</div>
+        </div>
+      </div>
+    </div>
+
     <div class="photoSpace">
       <div class="photoContainer">
         <div :style="`transform: translate3d(0px, 0px, 0px) scale(${imgScale}, ${imgScale});`"
@@ -42,7 +71,7 @@
 </template>
 
 <script setup>
-import {ref, onMounted, onUnmounted, watch} from 'vue'
+import {computed, onMounted, onUnmounted, ref} from 'vue'
 import IMG8503 from '../assets/img/IMG_8503.JPG'
 import th from '../assets/img/th.jfif'
 import th1 from '../assets/img/th1.jfif'
@@ -52,6 +81,8 @@ import th4 from '../assets/img/th4.jfif'
 import th5 from '../assets/img/th5.jfif'
 import th6 from '../assets/img/th6.jfif'
 import th7 from '../assets/img/th7.jfif'
+import {useRouter} from 'vue-router'
+import {mdList} from '@/stores/mdData.js'
 
 
 const photoArray1=[
@@ -92,6 +123,29 @@ const imgOffset=ref(-8)
 const imgScale=ref(1.1235)
 const scrollTop=ref(0) // 记录当前滚动距离
 
+// Hero 区整体缩放（与 photoSpace 同步思路：根据滚动比例映射 scale/offset）
+const heroScale=ref(1.08)
+const heroOffset=ref(0)
+
+const router=useRouter()
+const md=mdList()
+const selectedArticles=computed(() => md.codeList.slice(4, 7))
+
+const goNote=() => {
+    router.push({ name: 'Note' })
+}
+
+const goTools=() => {
+    router.push({ name: 'Tools' })
+}
+
+const goArticle=(id) => {
+    router.push({
+        name: 'NoteDetail',
+        params: { id }
+    })
+}
+
 
 // 2. 滚动事件处理函数
 const handleScroll=() => {
@@ -105,6 +159,11 @@ const handleScroll=() => {
     const scrollRatio=Math.max(0, Math.min(1, scrollTop.value/maxScroll))
 
     // 3. 根据比例映射到目标区间
+    // Hero：用相对滚动距离做映射，让视觉产生“整体收拢”的动效
+    const heroProgress=Math.max(0, Math.min(1, scrollTop.value/260))
+    heroScale.value=1.08-heroProgress*0.10 // 1.08 -> 0.98
+    heroOffset.value=-heroProgress*16
+
     // A：从-8到8，差值为16
     imgOffset.value=-8+scrollRatio*(8-(-8))
     // B：从1.3到1.05，差值为-0.25
@@ -122,10 +181,6 @@ onUnmounted(() => {
 </script>
 
 <style scoped>
-.BasicHome {
-
-}
-
 .Hero {
     width: 100%;
     height: 70vh;
@@ -163,6 +218,8 @@ onUnmounted(() => {
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    transform-origin: center center;
+    will-change: transform;
 }
 
 .con1 {
@@ -208,7 +265,7 @@ onUnmounted(() => {
 
 .con2 {
     font-size: 24px;
-    color: #1f1f1f;
+    color: var(--color-text);
     letter-spacing: -0.06em;
     font-weight: 400;
     text-transform: uppercase;
@@ -220,8 +277,99 @@ onUnmounted(() => {
     font-size: 16px;
 }
 
+.tagRow {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 18px;
+}
+
+.tag {
+    padding: 6px 12px;
+    border-radius: 999px;
+    background-color: rgba(0, 86, 179, 0.08);
+    border: 1px solid rgba(0, 86, 179, 0.14);
+    color: var(--color-primary);
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.ctaRow {
+    display: flex;
+    flex-direction: row;
+    gap: 14px;
+    margin-top: 18px;
+}
+
+.btn {
+    height: 46px;
+    padding: 0 18px;
+    border-radius: var(--radius-md);
+    border: 1px solid rgba(0, 86, 179, 0.2);
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: 700;
+    transition: transform var(--transition-fast) ease, background-color var(--transition-fast) ease, color var(--transition-fast) ease, border-color var(--transition-fast) ease;
+}
+
+.btnPrimary {
+    background-color: var(--color-primary);
+    color: white;
+    border-color: var(--color-primary);
+}
+
+.btnGhost {
+    background-color: transparent;
+    color: var(--color-primary);
+}
+
+.btn:hover {
+    transform: translate3d(0, -1px, 0);
+}
+
+.selectedSection {
+    padding: 56px 0 64px;
+}
+
+.selectedHeader {
+    font-size: 28px;
+    font-weight: 800;
+    text-align: center;
+    color: var(--color-text);
+    margin-bottom: 18px;
+}
+
+.selectedGrid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+}
+
+.selectedCard {
+    padding: 18px 18px;
+    cursor: pointer;
+    user-select: none;
+}
+
+.selectedTitle {
+    font-size: 18px;
+    font-weight: 800;
+    line-height: 1.35;
+    margin-bottom: 10px;
+    min-height: 52px;
+}
+
+.selectedMeta {
+    color: var(--color-muted);
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
 .photoSpace {
-    padding: 60px 60px;
+    padding: 60px 0;
     position: relative;
     margin-top: 80px;
     margin-bottom: 200px;
@@ -273,6 +421,8 @@ onUnmounted(() => {
     gap: 8px;
     display: flex;
     flex-direction: column;
+    position: relative;
+    bottom: 80px;
 }
 
 .photoCol3 {
@@ -295,8 +445,32 @@ onUnmounted(() => {
     position: relative;
     width: 100%;
     max-width: 100%;
-    vertical-align: middle;
     height: auto;
     object-fit: cover;
+}
+
+@media (max-width: 900px) {
+    .HeroContent {
+        width: calc(100% - 40px);
+    }
+
+    .ctaRow {
+        flex-direction: column;
+        width: 100%;
+        align-items: center;
+    }
+
+    .btn {
+        width: min(340px, 100%);
+    }
+
+    .selectedGrid {
+        grid-template-columns: 1fr;
+        padding: 0 16px;
+    }
+
+    .selectedTitle {
+        min-height: 0;
+    }
 }
 </style>

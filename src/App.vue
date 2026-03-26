@@ -69,15 +69,14 @@ onUnmounted(() => {
 
 <style scoped>
 .main-div {
-    background-color: #f0f4f8;
+    background-color: var(--color-bg);
     /*background-color: white;*/
     overflow: hidden;
     margin: 0 auto;
     /*background-color: oklch(21% .034 264.665);*/
     /*background-color: #101828;*/
     /*color: white;*/
-    font-family: Inter, 'Helvetica Neue', Helvetica, 'PingFang SC', 'Hiragino Sans GB',
-    'Microsoft YaHei', '微软雅黑', Arial, sans-serif;
+    font-family: var(--font-sans);
 }
 
 .app-vbind {

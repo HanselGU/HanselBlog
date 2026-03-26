@@ -23,7 +23,7 @@ const routes=[
 
             },//文章列表
             {
-                path: 'article',
+                path: 'article/:id',
                 name: 'NoteDetail',
                 component: () => import('@/pages/NoteDetail.vue')
             },//文章详情
